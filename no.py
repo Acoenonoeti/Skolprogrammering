@@ -1,3 +1,0 @@
-import msvcrt
-run = True
-
