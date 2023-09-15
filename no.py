@@ -1,0 +1,3 @@
+import msvcrt
+run = True
+
