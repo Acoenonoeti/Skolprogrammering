@@ -14,7 +14,7 @@ while done == False:
         word.append(d)
         loops = loops - 1
     respons = input("Gissa!\n")
-    svar = word[random.randrange(0,int(alternativ))]
+    svar = word[random.randrange(int(alternativ))]
     if respons == svar:
         print("Bra jobbat!\n")
     else:
