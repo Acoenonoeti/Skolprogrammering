@@ -19,11 +19,12 @@ x = 0
 y = 0
 while run != 0:
     run = input("Vandra runt (1), Sätta ut strukturer (2), Ta bort strukturer (3), Inspektera Strukturer (4) Avsluta (0)\n")
-    while not(run == "1" or run == "2" or run == "3" or run == "4" or run == "0"):
+    while run.isnumeric == False:
         run = input("Vandra runt (1), Sätta ut strukturer (2), Ta bort strukturer (3), Inspektera Strukturer (4) Avsluta (0)\n")
-    run = int(run)
+    if run.isnumeric:
+        run = int(float(run)//1)
     if run == 2:
-        struktur.append(Struktur(int(input("X-koordinat: ")),int(input("Y-koordinat: ")),float(input("Skala: ")),input("Namn: ")))
+        struktur.append(Struktur(int(input("X-koordinat: ")),int(input("Y-koordinat: ")),float(input("Skala: "))-1,input("Namn: ")))
     if run == 4:
         a = 0
         for strukt in struktur:
@@ -42,40 +43,58 @@ while run != 0:
                 else:
                     print("Ow,",hitcheck(x,y+1))
             elif a == "W":
-                if hitcheck(x,y+2) == True:
-                    y +=2
+                if hitcheck(x,y+1) == True:
+                    y +=1
+                    if hitcheck(x,y+1) == True:
+                        y +=1
+                    else:
+                        print("Ow,",hitcheck(x,y+1))
                 else:
-                    print("Ow,",hitcheck(x,y+2))
+                    print("Ow,",hitcheck(x,y+1))
             elif a == "s":
                 if hitcheck(x,y-1) == True:
                     y -=1
                 else:
                     print("Ow,",hitcheck(x,y-1))
             elif a == "S":
-                if hitcheck(x,y-2) == True:
-                    y -=2
+                if hitcheck(x,y-1) == True:
+                    y -=1
+                    if hitcheck(x,y-1) == True:
+                        y -=1
+                    else:
+                        print("Ow,",hitcheck(x,y-1))
                 else:
-                    print("Ow,",hitcheck(x,y-2))
+                    print("Ow,",hitcheck(x,y-1))
             elif a == "a":
                 if hitcheck(x-1,y) == True:
                     x -=1
                 else:
                     print("Ow,",hitcheck(x-1,y))
             elif a == "A":
-                if hitcheck(x-2,y) == True:
-                    x -=2
+                if hitcheck(x-1,y) == True:
+                    x -=1
+                    if hitcheck(x-1,y) == True:
+                        x -=1
+                    else:
+                        print("Ow,",hitcheck(x-1,y))
                 else:
-                    print("Ow,",hitcheck(x-2,y))
+                    print("Ow,",hitcheck(x-1,y))
             elif a == "d":
                 if hitcheck(x+1,y) == True:
                     x +=1
                 else:
                     print("Ow,",hitcheck(x+1,y))
             elif a == "D":
-                if hitcheck(x+2,y) == True:
-                    x +=2
+                if hitcheck(x+1,y) == True:
+                    x +=1
+                    if hitcheck(x+1,y) == True:
+                        x +=1
+                    else:
+                        print("Ow,",hitcheck(x+1,y))
                 else:
-                    print("Ow,",hitcheck(x+2,y))
+                    print("Ow,",hitcheck(x+1,y))
+            elif a.lower() == "space":
+                print("Good job, du hoppa :)\nEaster egg found!")
             else:
                 break
             
@@ -86,7 +105,7 @@ while run != 0:
             a += 1
             print(strukt.Namn," (",a,")",sep='', end=" ")
         check = int(input("\nVilken struktur vill du ta bort? "))-1
-        while (check > a) or (check < 1):
+        while (check > a) or (check < 0):
                 check = int(input("\nVilken struktur vill du ta bort?\n"))-1
         print("Tog bort",struktur[check].Namn,"\n")
         struktur.__delitem__(check)

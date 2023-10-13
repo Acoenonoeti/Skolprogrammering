@@ -27,5 +27,5 @@ while play == "y":
         print("\n","Vinst\n",sep="")
     else:
         print("\n","Förlust\n",sep="")
-    play = input("Kör igen? (y/n)\n")
+    play = input("Kör igen? (y/n)\n").lower
     print("\n")

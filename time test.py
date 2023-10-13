@@ -39,7 +39,7 @@ while a:
                 break
         h -= 1
     print("Contain:",d/e,"\nFor:",f/g)
-    a = input("Loop?")
+    a = input("Loop? ").lower
     if a != "no":
         a = True
         h = 30
